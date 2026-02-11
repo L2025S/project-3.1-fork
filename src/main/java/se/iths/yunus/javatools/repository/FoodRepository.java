@@ -1,6 +1,7 @@
 package se.iths.yunus.javatools.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import se.iths.yunus.javatools.model.Food;
 
@@ -12,8 +13,8 @@ import java.util.Optional;
 public interface FoodRepository extends JpaRepository<Food, Long> {
     Optional<Food> findByName(String name);
     Optional<Food> findByBarcode(String barcode);
-    List<Food> findAllHasSeafood();
-    List<Food> findAllHasLactose();
+    List<Food> findByHasSeafoodTrue();
+    List<Food> findByHasLactoseTrue();
     List<Food> findByNameContainingIgnoreCase(String keyword);
     List<Food> findByQuantityLessThanEqual( int quantity);
     List<Food> findByBestBeforeBefore(LocalDate date);
