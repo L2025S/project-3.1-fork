@@ -1,7 +1,9 @@
 package se.iths.yunus.javatools.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import se.iths.yunus.javatools.model.Food;
 import se.iths.yunus.javatools.service.FoodService;
@@ -20,23 +22,26 @@ public class FoodController {
     @GetMapping
     public String listAllFoods(Model model) {
         model.addAttribute("foods", foodService.findAll());
-        return"foods/list";
+        return"list";
     }
 
     @GetMapping("/{id}")
     public String showFood(@PathVariable Long id, Model model) {
         model.addAttribute("food", foodService.findById(id));
-        return "foods/show";
+        return "show";
     }
     // ======================= CREATE ============================
-    @PostMapping("/create")
+    @GetMapping("/create")
     public String showCreateForm(Model model) {
         model.addAttribute("food", new Food());
-        return "foods/create";
+        return "create";
     }
 
-    @GetMapping("/create")
-    public String createFood(@ModelAttribute Food food) {
+    @PostMapping("/create")
+    public String createFood(@Valid @ModelAttribute("food") Food food, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "create";
+        }
         foodService.create(food);
         return "redirect:/foods";
     }
@@ -44,7 +49,7 @@ public class FoodController {
     @GetMapping("/eidt/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
         model.addAttribute("food", foodService.findById(id));
-        return "foods/edit";
+        return "edit";
     }
 
     @PostMapping("edit/{id}")
