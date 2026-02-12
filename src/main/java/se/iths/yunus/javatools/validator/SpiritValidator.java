@@ -12,7 +12,7 @@ public class SpiritValidator {
             throw new InvalidSpiritException("Spirit cannot be null!");
         }
         validatedType(spirit.getType());
-        validatedName(spirit.getTitel());
+        validatedName(spirit.getTitle());
         validatedAPV(spirit.getApv());
         validatedAge(spirit.getAgeInMonth());
         validatedPrise(spirit.getPrise());
@@ -24,9 +24,9 @@ public class SpiritValidator {
         }
     }
 
-    private void validatedName(String titel) {
-        if (titel == null || titel.isBlank()) {
-            throw new InvalidSpiritException("Spirit titel cannot be null!");
+    private void validatedName(String title) {
+        if (title == null || title.isBlank()) {
+            throw new InvalidSpiritException("Spirit title cannot be null!");
         }
     }
 

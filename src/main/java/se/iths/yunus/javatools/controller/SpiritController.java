@@ -23,7 +23,7 @@ public class SpiritController {
 
     @GetMapping("/new")
     public String showCreateFormSpirit() {
-        return "create-sprit";
+        return "create-spirit";
     }
 
     @PostMapping
