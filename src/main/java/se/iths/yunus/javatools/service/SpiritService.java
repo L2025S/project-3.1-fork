@@ -42,7 +42,7 @@ public class SpiritService {
         spiritValidator.validated(spirit);
 
         update.setType(spirit.getType());
-        update.setTitel(spirit.getTitel());
+        update.setTitle(spirit.getTitle());
         update.setApv(spirit.getApv());
         update.setAgeInMonth(spirit.getAgeInMonth());
         update.setPrise(spirit.getPrise());

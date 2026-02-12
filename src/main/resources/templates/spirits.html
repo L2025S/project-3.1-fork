@@ -8,7 +8,7 @@
 <h1>Sprit Menu</h1>
 <ul>
     <li th:each="spirit : ${sprits}">
-        <span th:text="${spirit.titel}"></span>
+        <span th:text="${spirit.title}"></span>
         <a th:href="@{/sprits/{id}(id=${spirit.id})}">Visa Info</a>
         <span> - </span>
         <a th:href="@{/sprits/{id}/edit(id=${spirit.id})}">Uppdatera</a>

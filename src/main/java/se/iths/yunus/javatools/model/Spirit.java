@@ -1,17 +1,17 @@
 package se.iths.yunus.javatools.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "spirit")
 public class Spirit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "spiritid")
     private Long id;
     private String type;
-    private String titel;
+    @Column(name = "name")
+    private String title;
     private double apv;
     private int ageInMonth;
     private double prise;
@@ -19,10 +19,10 @@ public class Spirit {
     public Spirit() {
     }
 
-    public Spirit(Long id, String type, String titel, double apv, int ageInMonth, double prise) {
+    public Spirit(Long id, String type, String title, double apv, int ageInMonth, double prise) {
         this.id = id;
         this.type = type;
-        this.titel = titel;
+        this.title = title;
         this.apv = apv;
         this.ageInMonth = ageInMonth;
         this.prise = prise;
@@ -44,12 +44,12 @@ public class Spirit {
         this.type = type;
     }
 
-    public String getTitel() {
-        return titel;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitel(String titel) {
-        this.titel = titel;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public double getApv() {
