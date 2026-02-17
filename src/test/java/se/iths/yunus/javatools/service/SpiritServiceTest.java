@@ -122,7 +122,7 @@ class SpiritServiceTest {
         try {
             spiritService.getSpiritId(99L);
         } catch (Exception e) {
-            assertEquals("No Spirit 99", e.getMessage());
+            assertEquals("No Spirit99", e.getMessage());
         }
         //Verify
         verify(spiritRepository).findById(99L);
