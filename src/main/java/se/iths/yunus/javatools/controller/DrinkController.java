@@ -1,6 +1,5 @@
 package se.iths.yunus.javatools.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +12,6 @@ public class DrinkController {
 
     private final DrinkService drinkService;
 
-    @Autowired
     public DrinkController(DrinkService drinkService) {
         this.drinkService = drinkService;
     }
@@ -32,13 +30,6 @@ public class DrinkController {
         return "drink-findbyid";
     }
 
-    // HANDLE FORM SUBMIT FROM INDEX PAGE
-    @GetMapping("/findbyid")
-    public String findById(@RequestParam Long id) {
-        // Redirect to /drinks/{id}
-        return "redirect:/drinks/" + id;
-    }
-
     // SHOW CREATE FORM
     @GetMapping("/new")
     public String showCreateForm(Model model) {
@@ -48,7 +39,7 @@ public class DrinkController {
 
     // CREATE
     @PostMapping
-    public String postNewDrink(@ModelAttribute Drink drink) {
+    public String postNewDrink(Drink drink) {
         drinkService.postNewDrink(drink);
         return "redirect:/drinks";
     }

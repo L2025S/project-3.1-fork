@@ -34,7 +34,8 @@ public class DrinkService {
     }
 
     public Drink putExistingDrink(Long id, Drink drink) {
-        Drink existing = drinkRepository.findById(id).orElseThrow(() -> new DrinkNotFoundException("Drink with id " + id + " not found"));
+        Drink existing = drinkRepository.findById(id)
+                .orElseThrow(() -> new DrinkNotFoundException("Drink with id " + id + " not found"));
 
         drinkValidator.validate(drink);
 
