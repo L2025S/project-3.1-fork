@@ -1,5 +1,9 @@
+FROM eclipse-temurin:21-jre
 
-FROM ubuntu:latest
-LABEL authors="jakob"
+WORKDIR /app
 
-ENTRYPOINT ["top", "-b"]
+COPY target/java-tools-1.0.0.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
